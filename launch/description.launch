@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="joint_topic_name" default="/shelf_joint_states" />  
+  <arg name="status_topic_name" default="/shelf_states" />  
+  
+  <node name="kachaka_shelf_visualizer" pkg="robot_state_publisher" exec="robot_state_publisher" output="screen">
+    <param name="robot_description" type="str" value="$(command '$(find-pkg-prefix xacro)/bin/xacro $(find-pkg-share kachaka_shelf_description)/urdf/shelf_description.urdf.xacro')" />
+    <remap from="/joint_states" to="$(var joint_topic_name)" />
+    <remap from="/robot_description" to="$(var status_topic_name)" />
+  </node>
+  
+</launch>
