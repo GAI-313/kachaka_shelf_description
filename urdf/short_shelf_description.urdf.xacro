@@ -44,25 +44,6 @@
     </collision>
   </link>
 
-  <!-- Top Plate Link -->
-  <link name="shelf_top_plate_link">
-    <visual>
-      <geometry>
-        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf_plate.stl"/> <!-- PlateのSTLファイル -->
-      </geometry>
-       <material name="gray_material">
-        <color rgba="${gray}"/>
-      </material>
-      <origin xyz="-0.13 0 -${shelf_distance_short + 0.1}" rpy="0 0 1.5708"/>
-    </visual>
-    <collision>
-      <geometry>
-        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf_plate.stl"/> <!-- PlateのSTLファイル -->
-      </geometry>
-      <origin xyz="-0.13 0 -${shelf_distance_short + 0.1}" rpy="0 0 1.5708"/>
-    </collision>
-  </link>
-
   <!-- Joint between Base and Middle Plate -->
   <joint name="base_to_middle" type="fixed">
     <parent link="shelf_base_link"/>
