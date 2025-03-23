@@ -10,7 +10,7 @@
   <link name="shelf_base_link">
     <visual>
       <geometry>
-        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf_base.stl"/> <!-- BaseのSTLファイル -->
+        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf.stl" scale="0.001 0.001 0.001"/> <!-- BaseのSTLファイル -->
       </geometry>
       <material name="gray_material">
         <color rgba="${gray}"/>
@@ -19,7 +19,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf_base.stl"/> <!-- BaseのSTLファイル -->
+        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf.stl" scale="0.001 0.001 0.001"/> <!-- BaseのSTLファイル -->
       </geometry>
       <origin xyz="-0.13 0 0" rpy="0 0 1.5708"/>
     </collision>
@@ -29,18 +29,20 @@
   <link name="shelf_middle_plate_link">
     <visual>
       <geometry>
-        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf_plate.stl"/> <!-- PlateのSTLファイル -->
+        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf.stl" scale="0.001 0.001 0.001"/> <!-- PlateのSTLファイル -->
       </geometry>
        <material name="gray_material">
         <color rgba="${gray}"/>
       </material>
-      <origin xyz="-0.13 0 -${shelf_distance_long}" rpy="0 0 1.5708"/>
+      <!-- origin xyz="-0.13 0 -${shelf_distance_long}" rpy="0 0 1.5708"/ -->
+      <origin xyz="-0.13 0 0" rpy="0 0 1.5708"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf_plate.stl"/> <!-- PlateのSTLファイル -->
+        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf.stl" scale="0.001 0.001 0.001"/> <!-- PlateのSTLファイル -->
       </geometry>
-      <origin xyz="-0.13 0 -${shelf_distance_long}" rpy="0 0 1.5708"/>
+      <!--origin xyz="-0.13 0 -${shelf_distance_long}" rpy="0 0 1.5708"/-->
+      <origin xyz="-0.13 0 0" rpy="0 0 1.5708"/>
     </collision>
   </link>
 
@@ -48,18 +50,20 @@
   <link name="shelf_top_plate_link">
     <visual>
       <geometry>
-        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf_plate.stl"/> <!-- PlateのSTLファイル -->
+        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf.stl" scale="0.001 0.001 0.001"/> <!-- PlateのSTLファイル -->
       </geometry>
        <material name="gray_material">
         <color rgba="${gray}"/>
       </material>
-      <origin xyz="-0.13 0 -${shelf_distance_short + 0.1}" rpy="0 0 1.5708"/>
+      <!-- origin xyz="-0.13 0 -${shelf_distance_long}" rpy="0 0 1.5708"/ -->
+      <origin xyz="-0.13 0 0" rpy="0 0 1.5708"/>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf_plate.stl"/> <!-- PlateのSTLファイル -->
+        <mesh filename="package://kachaka_shelf_description/stl/kachaka_shelf.stl" scale="0.001 0.001 0.001"/> <!-- PlateのSTLファイル -->
       </geometry>
-      <origin xyz="-0.13 0 -${shelf_distance_short + 0.1}" rpy="0 0 1.5708"/>
+      <!--origin xyz="-0.13 0 -${shelf_distance_long}" rpy="0 0 1.5708"/-->
+      <origin xyz="-0.13 0 0" rpy="0 0 1.5708"/>
     </collision>
   </link>
 
@@ -67,10 +71,10 @@
   <joint name="base_to_middle" type="fixed">
     <parent link="shelf_base_link"/>
     <child link="shelf_middle_plate_link"/>
-    <origin xyz="0 0 ${shelf_distance_long}"/> <!-- Z軸方向に0.15m上 -->
+    <origin xyz="0 0 ${shelf_distance_short}"/> <!-- Z軸方向に0.15m上 -->
   </joint>
 
-  <!-- Joint between Middle Plate and Top Plate -->
+  <!-- Joint between Middle and Top Plate -->
   <joint name="middle_to_top" type="fixed">
     <parent link="shelf_middle_plate_link"/>
     <child link="shelf_top_plate_link"/>
